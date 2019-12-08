@@ -39,4 +39,10 @@ public class SandwichShopManagerTest {
 		itemsOrdered.addAll(Arrays.asList(mozzarella, primavera, salsiccia, salame, olive_ascolane, prosciutto, mozzarella));
 		assertEquals(27.25d, manager.getOrderPrice(itemsOrdered), 0.00d);
 	}
+	
+	@Test
+	public void test_totale_itemsAddedManually_moreThan50euros() throws TakeAwayBillException{
+		itemsOrdered.addAll(Arrays.asList(salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia));
+		assertEquals(46.75d, manager.getOrderPrice(itemsOrdered), 0.00d);
+	}
 }
