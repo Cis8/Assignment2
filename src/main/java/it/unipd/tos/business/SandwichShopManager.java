@@ -18,9 +18,13 @@ public class SandwichShopManager implements TakeAwayBill {
 
     double subtotal(List<MenuItem> itemsOrdered) throws TakeAwayBillException {
         if (itemsOrdered.size() > 30)
-            throw new TakeAwayBillException("Errore, ordine superiore a 30 elementi.");
+        {
+            throw new TakeAwayBillException("Errore, ordine superiore a 30 elementi.");   
+        }
         else
-            return itemsOrdered.stream().mapToDouble(x -> x.getPrice()).sum();
+        {
+            return itemsOrdered.stream().mapToDouble(x -> x.getPrice()).sum();   
+        }
     }
 
     double discount_more5sandwiches(List<MenuItem> itemsOrdered) {
