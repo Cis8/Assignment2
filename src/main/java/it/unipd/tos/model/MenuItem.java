@@ -24,10 +24,6 @@ public class MenuItem {
         return type;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Double getPrice() {
         return price;
     }

@@ -10,8 +10,4 @@ public class TakeAwayBillException extends Throwable {
     public TakeAwayBillException(String message) {
         errorMessage = message;
     }
-
-    public String getError() {
-        return errorMessage;
-    }
 }

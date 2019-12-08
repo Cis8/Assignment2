@@ -13,12 +13,13 @@ import it.unipd.tos.model.MenuItem.itemType;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class SandwichShopManagerTest {
 
     private SandwichShopManager manager = new SandwichShopManager();
-    private ArrayList<MenuItem> itemsOrdered = new ArrayList<MenuItem>();
+    private ArrayList<MenuItem> itemsOrdered;
 
     private MenuItem primavera = new MenuItem(itemType.Panini, "Primavera", 4.50d);
     private MenuItem salsiccia = new MenuItem(itemType.Panini, "Salsiccia", 5.50d);
@@ -27,6 +28,11 @@ public class SandwichShopManagerTest {
     private MenuItem prosciutto = new MenuItem(itemType.Panini, "Prosciutto", 4.00d);
     private MenuItem olive_ascolane = new MenuItem(itemType.Fritti, "Olive ascolane", 3.00d);
 
+    @Before
+    public void reset_itemsOrdered() {
+        itemsOrdered = new ArrayList<MenuItem>();
+    }
+    
     @Test
     public void test_totale_base_case() throws TakeAwayBillException {
         itemsOrdered.addAll(Arrays.asList(primavera, salsiccia, olive_ascolane));
@@ -49,8 +55,7 @@ public class SandwichShopManagerTest {
 
     @Test(expected = TakeAwayBillException.class)
     public void test_piu30item_eccezione() throws TakeAwayBillException {
-        itemsOrdered.addAll(Arrays.asList(salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia,
-                salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia));
+        itemsOrdered.addAll(Arrays.asList(salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia));
         manager.getOrderPrice(itemsOrdered);
     }
     
