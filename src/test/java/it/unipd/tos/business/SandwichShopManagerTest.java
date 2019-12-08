@@ -53,4 +53,10 @@ public class SandwichShopManagerTest {
                 salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia, salsiccia));
         manager.getOrderPrice(itemsOrdered);
     }
+    
+    @Test
+    public void test_commissione_50cent_con_meno_10euro_ordinazione() throws TakeAwayBillException {
+        itemsOrdered.addAll(Arrays.asList(salsiccia, olive_ascolane));
+        assertEquals(9.00d, manager.getOrderPrice(itemsOrdered), 0.00d);
+    }
 }

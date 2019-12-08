@@ -13,7 +13,7 @@ import it.unipd.tos.model.MenuItem.itemType;
 public class SandwichShopManager implements TakeAwayBill {
     @Override
     public double getOrderPrice(List<MenuItem> itemsOrdered) throws TakeAwayBillException {
-        return subtotal(itemsOrdered) - discount_more5sandwiches(itemsOrdered) - discount_more50euros(itemsOrdered);
+        return subtotal(itemsOrdered) - discount_more5sandwiches(itemsOrdered) - discount_more50euros(itemsOrdered) + commission(itemsOrdered);
     }
 
     double subtotal(List<MenuItem> itemsOrdered) throws TakeAwayBillException {
@@ -37,5 +37,10 @@ public class SandwichShopManager implements TakeAwayBill {
             return partial * 0.1;
         }
         return 0.0;
+    }
+    
+    double commission(List<MenuItem> itemsOrdered)
+    {
+        return itemsOrdered.stream().mapToDouble(d -> d.getPrice()).sum() < 10.0 ? 0.5 : 0.0;
     }
 }
