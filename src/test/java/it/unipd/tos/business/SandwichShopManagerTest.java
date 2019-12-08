@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////
+// EMANUELE CISOTTO 1161514
+////////////////////////////////////////////////////////////////////
 package it.unipd.tos.business;
 
 
@@ -19,6 +22,9 @@ public class SandwichShopManagerTest {
 	
     private MenuItem primavera = new MenuItem(itemType.Panini, "Primavera", 4.50d);
     private MenuItem salsiccia = new MenuItem(itemType.Panini, "Salsiccia", 5.50d);
+    private MenuItem salame = new MenuItem(itemType.Panini, "Salame", 5.00d);
+    private MenuItem mozzarella = new MenuItem(itemType.Panini, "Mozzarella", 3.50d);
+    private MenuItem prosciutto = new MenuItem(itemType.Panini, "Prosciutto", 4.00d);
     private MenuItem olive_ascolane = new MenuItem(itemType.Fritti, "Olive ascolane", 3.00d);
     
 	@Test
@@ -27,4 +33,10 @@ public class SandwichShopManagerTest {
 		assertEquals(13.00d, manager.getOrderPrice(itemsOrdered), 0.00d);
 	}
 
+	
+	@Test
+	public void test_totale_itemsAddedManually_moreThan5Sandwiches() throws TakeAwayBillException{
+		itemsOrdered.addAll(Arrays.asList(mozzarella, primavera, salsiccia, salame, olive_ascolane, prosciutto, mozzarella));
+		assertEquals(27.25d, manager.getOrderPrice(itemsOrdered), 0.00d);
+	}
 }
